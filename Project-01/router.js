@@ -15,6 +15,17 @@ router.post("/", async (req, res) => {
   }
 });
 
+router.get("/", async (req, res) => {
+  try {
+    const responce = await person.find();
+    res.status(200).json(responce);
+    console.log("Fetch Full Data Successfully! ");
+  } catch (error) {
+    res.status(404).json({ error: "Some Error In Fetach Data From Full!" });
+    console.log("Some Error In Fetach Data From Full!");
+  }
+});
+
 router.get("/:typeData", async (req, res) => {
   try {
     const data = req.params.typeData;
