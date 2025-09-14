@@ -4,15 +4,14 @@ const app = express();
 const bodyParser = require("body-parser");
 app.use(bodyParser.json());
 
+require("dotenv").config();
+const PORT = process.env.PORT || 3000;
+
 const db = require("./db");
 
 const router = require("./router");
 app.use("/person", router);
 
-app.listen(3000, (req, res) => {
+app.listen(PORT, (req, res) => {
   console.log("server listen on http://localhost:3000");
 });
-
-
-// Finally i push data by git 
-// edit by Ahmad
